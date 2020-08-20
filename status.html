@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title id="title"></title>
+    $(if refresh-timeout)
+    <meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+    $(endif)
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/img/favicon.png" />
+    <script language="JavaScript">
+        <!--
+        $(if advert-pending == 'yes')
+            var popup = '';
+        function focusAdvert() {
+            if (window.focus) popup.focus();
+        }
+        function openAdvert() {
+            popup = open('$(link-advert)', 'hotspot_advert', '');
+            setTimeout("focusAdvert()", 1000);
+        }
+        $(endif)
+        function openLogout() {
+            if (window.name != 'hotspot_status') return true;
+            open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250');
+            window.close();
+            return false;
+        }
+        //-->
+    </script>
+</head>
+<body class=" bg-pink-100">
+$(if advert-pending == 'yes')
+onLoad="openAdvert()"
+$(endif)
+<div class="max-w-md mx-auto bg-pink-200 shadow-xl rounded my-8 p-10">
+    <img class="text-center mx-auto block" src="assets/img/logo.png" alt="Muria Net"/>
+    $(if login-by == 'trial')
+    <div class="text-center text-pink-600 py-4">Selamat Datang</div>
+    $(elif login-by != 'mac')
+    <div class="text-center text-pink-600 py-4">Selamat Datang $(username)</div>
+    $(endif)
+    <form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+        <div class="bg-pink-300 pt-8 pb-8 rounded" style="min-height: 277px">
+            <div class="w-4/5 mx-auto">
+                <ul class="flex flex-col">
+                    <li class="border-gray-400 flex flex-row mb-2">
+                        <div class="select-none cursor-pointer bg-gray-200 rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex flex-col rounded-md w-10 h-10 bg-gray-300 justify-center items-center mr-4">🙍‍♂️</div>
+                            <div class="flex-1 pl-1">
+                                <div class="font-medium">Username</div>
+                                <div class="text-gray-600 text-sm">$(username)</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="border-gray-400 flex flex-row mb-2">
+                        <div class="select-none cursor-pointer bg-gray-200 rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex flex-col rounded-md w-10 h-10 bg-gray-300 justify-center items-center mr-4">🖥</div>
+                            <div class="flex-1 pl-1 ">
+                                <div class="font-medium">IP Address</div>
+                                <div class="text-gray-600 text-sm">$(ip)</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="border-gray-400 flex flex-row mb-2">
+                        <div class="select-none cursor-pointer bg-gray-200 rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex flex-col rounded-md w-10 h-10 bg-gray-300 justify-center items-center mr-4">💻</div>
+                            <div class="flex-1 pl-1 ">
+                                <div class="font-medium">MAC</div>
+                                <div class="text-gray-600 text-sm">$(mac)</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="border-gray-400 flex flex-row mb-2">
+                        <div class="select-none cursor-pointer bg-gray-200 rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex flex-col rounded-md w-10 h-10 bg-gray-300 justify-center items-center mr-4">📤</div>
+                            <div class="flex-1 pl-1">
+                                <div class="font-medium">Upload & Download</div>
+                                <div class="text-gray-600 text-sm">$(bytes-in-nice) - $(bytes-out-nice)</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="border-gray-400 flex flex-row mb-2">
+                        <div class="select-none cursor-pointer bg-gray-200 rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex flex-col rounded-md w-10 h-10 bg-gray-300 justify-center items-center mr-4">📊</div>
+                            <div class="flex-1 pl-1 ">
+                                <div class="font-medium">Aktif</div>
+                                <div class="text-gray-600 text-sm">$(uptime)</div>
+                            </div>
+                        </div>
+                    </li>
+                    $(if remain-bytes-total)
+                    <li class="border-gray-400 flex flex-row mb-2">
+                        <div class="select-none cursor-pointer bg-gray-200 rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex flex-col rounded-md w-10 h-10 bg-gray-300 justify-center items-center mr-4">📈</div>
+                            <div class="flex-1 pl-1 ">
+                                <div class="font-medium">Sisa Kuota</div>
+                                <div class="text-gray-600 text-sm">$(remain-bytes-total-nice)</div>
+                            </div>
+                        </div>
+                    </li>
+                    $(endif)
+                    $(if session-time-left)
+                    <li class="border-gray-400 flex flex-row mb-2">
+                        <div class="select-none cursor-pointer bg-gray-200 rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex flex-col rounded-md w-10 h-10 bg-gray-300 justify-center items-center mr-4">🔒</div>
+                            <div class="flex-1 pl-1 mr-16">
+                                <div class="font-medium">Status</div>
+                                <div class="text-gray-600 text-sm"><a href="$(link-advert)" target="hotspot_advert">advertisement</a></div>
+                            </div>
+                            <div class="text-gray-600 text-xs">Required</div>
+                        </div>
+                    </li>
+                    $(endif)
+                    $(if blocked == 'yes')
+                    <li class="border-gray-400 flex flex-row mb-2">
+                        <div class="select-none cursor-pointer bg-gray-200 rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex flex-col rounded-md w-10 h-10 bg-gray-300 justify-center items-center mr-4">⏱️</div>
+                            <div class="flex-1 pl-1 ">
+                                <div class="font-medium">Sisa Waktu</div>
+                                <div class="text-gray-600 text-sm">$(session-time-left)</div>
+                            </div>
+                        </div>
+                    </li>
+                    $(elif refresh-timeout)
+                    <li class="border-gray-400 flex flex-row mb-2">
+                        <div class="select-none cursor-pointer bg-gray-200 rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex flex-col rounded-md w-10 h-10 bg-gray-300 justify-center items-center mr-4">⌛</div>
+                            <div class="flex-1 pl-1 ">
+                                <div class="font-medium">Refresh</div>
+                                <div class="text-gray-600 text-sm">$(refresh-timeout)</div>
+                            </div>
+                        </div>
+                    </li>
+                    $(endif)
+                </ul>
+                $(if login-by-mac != 'yes')
+                <button class="bg-pink-600 block mx-auto text-white text-sm uppercase rounded shadow-md px-6 py-2" type="submit">Logout</button>
+                $(endif)
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    document.getElementById('title').innerHTML = window.location.hostname + " > status";
+    //get vaidity
+    var usr = document.getElementById('user').innerHTML;
+    var url = "https://muria.my.id/status/status.php?name="; // http://ip-server-mikhmon/mikhmonv2/status/status.php?name=
+    var SessionName = "HotspotService1";
+    var getvalid = url+usr+"&session="+SessionName;
+    document.getElementById('exp').src = getvalid;
+    console.log(getvalid);
+</script>
+</body>
+</html>

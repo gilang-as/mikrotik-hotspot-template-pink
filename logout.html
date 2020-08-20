@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title id="title"></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="expires" content="-1" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="icon" href="assets/img/favicon.png" />
+</head>
+<body class=" bg-pink-100">
+<script language="JavaScript">
+	<!--
+	function openLogin() {
+		if (window.name != 'hotspot_logout') return true;
+		open('$(link-login)', '_blank', '');
+		window.close();
+		return false;
+	}
+	//-->
+</script>
+<div class="max-w-md mx-auto bg-pink-200 shadow-xl rounded my-8 p-10">
+	<img class="text-center mx-auto block" src="assets/img/logo.png" alt="Muria Net"/>
+	<div class="text-center text-pink-600 py-4">Anda Telah Keluar</div>
+
+		<div class="bg-pink-300 pt-8 pb-8 rounded" style="min-height: 277px">
+			<div class="w-4/5 mx-auto">
+				<ul class="flex flex-col">
+					<li class="border-gray-400 flex flex-row mb-2">
+						<div class="select-none cursor-pointer bg-gray-200 rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+							<div class="flex flex-col rounded-md w-10 h-10 bg-gray-300 justify-center items-center mr-4">🙍‍♂️</div>
+							<div class="flex-1 pl-1">
+								<div class="font-medium">Username</div>
+								<div class="text-gray-600 text-sm">$(username)</div>
+							</div>
+						</div>
+					</li>
+					<li class="border-gray-400 flex flex-row mb-2">
+						<div class="select-none cursor-pointer bg-gray-200 rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+							<div class="flex flex-col rounded-md w-10 h-10 bg-gray-300 justify-center items-center mr-4">🖥</div>
+							<div class="flex-1 pl-1 ">
+								<div class="font-medium">IP Address</div>
+								<div class="text-gray-600 text-sm">$(ip)</div>
+							</div>
+						</div>
+					</li>
+					<li class="border-gray-400 flex flex-row mb-2">
+						<div class="select-none cursor-pointer bg-gray-200 rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+							<div class="flex flex-col rounded-md w-10 h-10 bg-gray-300 justify-center items-center mr-4">💻</div>
+							<div class="flex-1 pl-1 ">
+								<div class="font-medium">MAC</div>
+								<div class="text-gray-600 text-sm">$(mac)</div>
+							</div>
+						</div>
+					</li>
+					<li class="border-gray-400 flex flex-row mb-2">
+						<div class="select-none cursor-pointer bg-gray-200 rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+							<div class="flex flex-col rounded-md w-10 h-10 bg-gray-300 justify-center items-center mr-4">📤</div>
+							<div class="flex-1 pl-1">
+								<div class="font-medium">Upload & Download</div>
+								<div class="text-gray-600 text-sm">$(bytes-in-nice) - $(bytes-out-nice)</div>
+							</div>
+						</div>
+					</li>
+					<li class="border-gray-400 flex flex-row mb-2">
+						<div class="select-none cursor-pointer bg-gray-200 rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+							<div class="flex flex-col rounded-md w-10 h-10 bg-gray-300 justify-center items-center mr-4">📊</div>
+							<div class="flex-1 pl-1 ">
+								<div class="font-medium">Aktif</div>
+								<div class="text-gray-600 text-sm">$(uptime)</div>
+							</div>
+						</div>
+					</li>
+					$(if remain-bytes-total)
+					<li class="border-gray-400 flex flex-row mb-2">
+						<div class="select-none cursor-pointer bg-gray-200 rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+							<div class="flex flex-col rounded-md w-10 h-10 bg-gray-300 justify-center items-center mr-4">📈</div>
+							<div class="flex-1 pl-1 ">
+								<div class="font-medium">Sisa Kuota</div>
+								<div class="text-gray-600 text-sm">$(remain-bytes-total-nice)</div>
+							</div>
+						</div>
+					</li>
+					$(endif)
+					$(if session-time-left)
+					<li class="border-gray-400 flex flex-row mb-2">
+						<div class="select-none cursor-pointer bg-gray-200 rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+							<div class="flex flex-col rounded-md w-10 h-10 bg-gray-300 justify-center items-center mr-4">⏱️</div>
+							<div class="flex-1 pl-1 ">
+								<div class="font-medium">Sisa Waktu</div>
+								<div class="text-gray-600 text-sm">$(session-time-left)</div>
+							</div>
+						</div>
+					</li>
+					$(endif)
+				</ul>
+				<form action="$(link-login)" name="login" onSubmit="return openLogin()">
+					<button class="bg-pink-600 block mx-auto text-white text-sm uppercase rounded shadow-md px-6 py-2" type="submit">Login</button>
+				</form>
+			</div>
+		</div>
+</div>
+<script type="text/javascript">
+	document.getElementById('title').innerHTML = window.location.hostname + " > logout";
+</script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title id="title"></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="expires" content="-1" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="icon" href="assets/img/favicon.png" />
+</head>
+
+<body class=" bg-pink-100">
+<div class="max-w-md mx-auto bg-pink-200 shadow-xl rounded my-8 p-10">
+	<img class="text-center mx-auto block" src="assets/img/logo.png" alt="Muria Net"/>
+	<div class="text-center text-pink-600 py-4">Masuk Dengan</div>
+	<div class="flex justify-center mb-5">
+		<button class="flex items-center bg-pink-100 shadow-md border border-gray-200 rounded px-4 py-2 mr-2" id="btnvcr" onclick="voucher()">
+			<svg class="fill-current text-pink-600 w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zM7 6v2a3 3 0 1 0 6 0V6a3 3 0 1 0-6 0zm-3.65 8.44a8 8 0 0 0 13.3 0 15.94 15.94 0 0 0-13.3 0z"/></svg>
+			<div class="text-pink-700">Voucher</div>
+		</button>
+		<button class="flex items-center bg-pink-100 shadow-md border border-gray-200 rounded px-4 py-2 mr-2" id="btnmem"  onclick="member()">
+			<svg class="fill-current text-pink-600 w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zM7 6v2a3 3 0 1 0 6 0V6a3 3 0 1 0-6 0zm-3.65 8.44a8 8 0 0 0 13.3 0 15.94 15.94 0 0 0-13.3 0z"/></svg>
+			<div class="text-pink-700">Member</div>
+		</button>
+	</div>
+	$(if error)
+	<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-5" role="alert">
+		<strong class="font-bold">Error</strong>
+		<span class="block sm:inline">$(error)</span>
+		<span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+      </span>
+	</div>
+	$(endif)
+	$(if chap-id)
+	<form name="sendin" action="$(link-login-only)" method="post">
+		<input type="hidden" name="username" />
+		<input type="hidden" name="password" />
+		<input type="hidden" name="dst" value="$(link-orig)" />
+		<input type="hidden" name="popup" value="true" />
+	</form>
+
+	<script type="text/javascript" src="/md5.js"></script>
+	<script type="text/javascript">
+		<!--
+		function doLogin() {
+			document.sendin.username.value = document.login.username.value;
+			document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+			document.sendin.submit();
+			return false;
+		}
+		//-->
+	</script>
+	$(endif)
+	<form autocomplete="off" name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
+		<div class="bg-pink-300 pt-8 pb-8 rounded" style="min-height: 277px">
+			<div class="text-center text-pink-600 mb-6" id="psn_1">Masukkan Voucher</div>
+			<div class="text-center text-pink-600 mb-6" id="psn_2">Masukkan Username dan Kata Sandi</div>
+			<div class="w-4/5 mx-auto">
+				<input type="hidden" name="dst" value="$(link-orig)" />
+				<input type="hidden" name="popup" value="true" />
+				<div class="flex items-center bg-pink-100  rounded shadow-md mb-4">
+                    <span class="px-3">
+                        <svg class="fill-current text-pink-500 w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18 2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2h16zm-4.37 9.1L20 16v-2l-5.12-3.9L20 6V4l-10 8L0 4v2l5.12 4.1L0 14v2l6.37-4.9L10 14l3.63-2.9z"/></svg>
+                    </span>
+					<input class="w-full h-12 focus:outline-none" id="username" value="$(username)" type="text" name="username">
+				</div>
+				<div class="flex items-center bg-pink-100 rounded shadow-md mb-4" style="display: none" id="pass">
+                    <span class="px-3">
+                        <svg class="fill-current text-pink-500 w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M4 8V6a6 6 0 1 1 12 0h-3v2h4a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z"/></svg>
+                    </span>
+					<input class="w-full h-12 focus:outline-none " id="password" type="password" name="password">
+				</div>
+				<button class="bg-pink-600 block mx-auto text-white text-sm uppercase rounded shadow-md px-6 py-2" type="submit">Login</button>
+				<div class="pt-5">
+					<div class="flex justify-center mb-5">
+						$(if trial == 'yes')
+						<a class="bg-pink-600 block mx-auto text-white text-sm uppercase rounded shadow-md px-6 py-2" href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">
+							<button class="">TRIAL</button>
+						</a>
+						$(endif)
+						<a class="bg-pink-600 block mx-auto text-white text-sm uppercase rounded shadow-md px-6 py-2" href="/paket.html">
+							<button class="">PAKET</button>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<script type="text/javascript">
+	<!--
+	document.getElementById("username").focus();
+	document.getElementById('title').innerHTML = window.location.hostname + " > login";
+
+	// login page 2 mode by Laksamadi Guko
+	var username = document.getElementById("username");
+	var password = document.getElementById("password");
+
+	var btnvcr = document.getElementById("btnvcr");
+	var btnmem = document.getElementById("btnmem");
+	var pass = document.getElementById("pass");
+
+	var psn_1 = document.getElementById("psn_1");
+	var psn_2 = document.getElementById("psn_2");
+
+	// set password = username
+	function setpass(){
+		var user = username.value
+		password.value = user;
+	}
+
+	username.onkeyup = setpass;
+
+	btnvcr.classList.remove("bg-pink-100");
+	btnvcr.classList.add("bg-pink-300");
+	psn_2.style.display = 'none'
+
+	// change to voucher mode
+	function voucher(){
+		username.focus();
+		username.onkeyup = setpass;
+		username.placeholder = "Voucher";
+		pass.style.display = 'none'
+		psn_1.style.display = ''
+		psn_2.style.display = 'none'
+
+		btnvcr.classList.remove("bg-pink-100");
+		btnvcr.classList.add("bg-pink-300");
+		btnmem.classList.remove("bg-pink-300");
+		btnmem.classList.add("bg-pink-100");
+
+		password.type = "hidden";
+		password.value = username.value;
+	}
+
+	// change to member mode
+	function member(){
+		username.focus();
+		username.onkeyup = "";
+		username.placeholder = "Username";
+		password.placeholder = "Password";
+		password.type= "password";
+		password.value = "";
+		pass.style.display = ""
+
+		psn_2.style.display = ''
+		psn_1.style.display = 'none'
+
+		btnmem.classList.remove("bg-pink-100");
+		btnmem.classList.add("bg-pink-300");
+		btnvcr.classList.remove("bg-pink-300");
+		btnvcr.classList.add("bg-pink-100");
+	}
+
+	//-->
+</script>
+</body>
+</html>
